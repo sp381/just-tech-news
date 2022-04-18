@@ -8,7 +8,10 @@
   },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/sp381/just-tech-news/issues"
+  "dependencies": {
+    "express": "^4.17.3",
+    "mysql2": "^2.1.0",
+    "sequelize": "^6.19.0"
   }
 }
+
