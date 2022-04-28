@@ -1,9 +1,10 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { Post, User, Comment } = require('../models');
+const withAuth = require('../utils/auth');
 
-
-router.get('/', (req, res) => {
+router.get('/', withAuth, (req, res) => {
+    //inner logic remains the same...
     Post.findAll({
         where: {
             //use the ID from the session
@@ -41,5 +42,12 @@ router.get('/', (req, res) => {
         res.status(500).json(err);
     });
 });
+
+router.get('/edit/:id', withAuth, (req, res) => {
+    res.render('homepage', {
+      posts,
+      loggedIn: req.session.loggedIn
+    });
+  });
 
 module.exports = router;
